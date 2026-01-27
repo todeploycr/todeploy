@@ -1,0 +1,66 @@
+---
+// Contacto.astro
+---
+
+<div class="contacto-section">
+    <!-- Onda superior usando union.svg invertida -->
+    <div class="contacto-wave-top"></div>
+    
+    <div class="contacto-content">
+        <!-- Puntos animados de fondo -->
+        <div class="contacto-dots" id="contactoDots"></div>
+        
+        <!-- Robots -->
+        <div class="contacto-robots">
+            <img src="/robots.png" alt="Robots" class="robots-img">
+        </div>
+        
+        <!-- Contenido de texto -->
+        <div class="contacto-card">
+            <h2 class="contacto-title">Contáctanos</h2>
+            <p class="contacto-text">
+                ¿Puedes ver el pequeño círculo que te persigue cuando haces scroll?
+            </p>
+            <p class="contacto-text">
+                Para ponernos en contacto con nosotros solo necesitas buscar y escribir tu correo electrónico y nombre de usuario, si es necesaria tu enviamos tu información y nosotros te contactaremos.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Onda inferior usando union.svg normal -->
+    <div class="contacto-wave-bottom"></div>
+</div>
+
+<script>
+    // Generar puntos animados
+    function createDots() {
+        const dotsContainer = document.getElementById('contactoDots');
+        if (!dotsContainer) return;
+        
+        const numberOfDots = 30;
+        
+        for (let i = 0; i < numberOfDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'animated-dot';
+            
+            // Posición aleatoria
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.top = Math.random() * 100 + '%';
+            
+            // Delay aleatorio para la animación
+            dot.style.animationDelay = Math.random() * 4 + 's';
+            
+            // Duración aleatoria
+            dot.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            
+            dotsContainer.appendChild(dot);
+        }
+    }
+    
+    // Ejecutar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', createDots);
+    } else {
+        createDots();
+    }
+</script>

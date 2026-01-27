@@ -1,0 +1,110 @@
+---
+
+---
+
+    <header class="header">
+    <div class="header-container">
+        <div class="logo-container">
+            <img src="/logo.png" alt="Prismatica Logo" class="logo">
+            <div class="logo-text">
+                <span class="logo-title">Prismatica</span>
+                <span class="logo-subtitle">Software & Automation</span>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#inicio" class="nav-link active2">Inicio</a>
+            <a href="#servicios" class="nav-link">Servicios</a>
+            <a href="#quienes-somos" class="nav-link">¿Quiénes somos?</a>
+            <a href="#contactanos" class="nav-link">Contáctanos</a>
+            <a href="#inteligencia-artificial" class="nav-link">Inteligencia Artificial</a>
+        </nav>
+
+        <!-- Botón menú móvil -->
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Menú móvil -->
+    <nav class="nav-mobile" id="navMobile">
+        <a href="/" class="nav-link-mobile">Inicio</a>
+        <a href="#servicios" class="nav-link-mobile">Servicios</a>
+        <a href="#quienes-somos" class="nav-link-mobile">¿Quiénes somos?</a>
+        <a href="#contactanos" class="nav-link-mobile">Contáctanos</a>
+        <a href="#inteligencia-artificial" class="nav-link-mobile">Inteligencia Artificial</a>
+    </nav>
+</header>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle') as HTMLElement;
+    const navMobile = document.getElementById('navMobile') as HTMLElement;
+
+    if (menuToggle && navMobile) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = navMobile.querySelectorAll('.nav-link-mobile');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMobile.classList.remove('active');
+            });
+        });
+    }
+
+
+// Versión mínima para navegación y resaltado
+document.addEventListener('DOMContentLoaded', (): void => {
+    const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.nav-link');
+    const sections: NodeListOf<HTMLElement> = document.querySelectorAll('.seccion');
+    
+    // Navegación suave
+    links.forEach((link: HTMLAnchorElement): void => {
+        link.addEventListener('click', (e: MouseEvent): void => {
+            e.preventDefault();
+            const targetId: string | null = link.getAttribute('href');
+            
+            if (targetId && targetId.startsWith('#')) {
+                const target: HTMLElement | null = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth' as ScrollBehavior
+                    });
+                }
+            }
+        });
+    });
+    
+    // Resaltar enlace activo
+    window.addEventListener('scroll', (): void => {
+        let currentSectionId: string = '';
+        
+        sections.forEach((section: HTMLElement): void => {
+            const sectionTop: number = section.offsetTop;
+            if (window.scrollY >= sectionTop - 100) {
+                currentSectionId = '#' + section.id;
+            }
+        });
+        
+        links.forEach((link: HTMLAnchorElement): void => {
+            link.classList.remove('active2');
+            const href: string | null = link.getAttribute('href');
+            if (href === currentSectionId) {
+                link.classList.add('active2');
+            }
+        });
+    });
+});
+
+
+
+    
+</script>
+

@@ -1,0 +1,178 @@
+---
+
+---
+
+
+        <h2 class="text-center">Servicios</h2>
+        <div class="texto-contenido-principal">
+            <p>En nuestra empresa, combinamos innovación tecnológica con estrategia para ofrecer soluciones digitales integrales que impulsan el crecimiento de tu negocio. 
+                Nuestros servicios están diseñados para optimizar procesos, mejorar la presencia digital y garantizar una experiencia excepcional para tus clientes,
+                 siempre adaptándonos a tus objetivos específicos.</p>
+        </div>
+        
+        <!-- Carrusel -->
+        <div class="carrusel-container">
+            <div class="carrusel-track" id="carrusel-track">
+    
+               <div class="service-card active">
+                        <span class="service-number">01</span>
+                        <h3 class="service-title">Automatizaciones Inteligentes</h3>
+                        <p class="service-description">Optimizamos procesos para ahorrar tiempo, reducir errores y aumentar la eficiencia.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-number">02</span>
+                        <h3 class="service-title">Desarrollo Web</h3>
+                        <p class="service-description">Creamos sitios web modernos, rápidos y optimizados para tu negocio.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-number">03</span>
+                        <h3 class="service-title">Consultoría Digital</h3>
+                        <p class="service-description">Te ayudamos a transformar tu negocio con estrategias digitales efectivas.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-number">04</span>
+                        <h3 class="service-title">Diseño UX/UI</h3>
+                        <p class="service-description">Diseñamos interfaces intuitivas que mejoran la experiencia de tus usuarios.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-number">05</span>
+                        <h3 class="service-title">Integración de Sistemas</h3>
+                        <p class="service-description">Conectamos tus herramientas y plataformas para trabajar de forma unificada.</p>
+                    </div>
+            </div>
+        </div>
+        
+        <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="carousel-dots" id="dots">
+                        <button class="dot active" data-index="0"></button>
+                        <button class="dot" data-index="1"></button>
+                        <button class="dot" data-index="2"></button>
+                        <button class="dot" data-index="3"></button>
+                        <button class="dot" data-index="4"></button>
+                    </div>
+                    
+                    <button class="carousel-btn next" id="nextBtn" aria-label="Siguiente">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+        </div>
+    
+
+
+<script>
+    const carousel = document.getElementById("carrusel-track") as HTMLElement;
+    const prevBtn = document.getElementById("prevBtn") as HTMLButtonElement;
+    const nextBtn = document.getElementById("nextBtn") as HTMLButtonElement;
+    const dots = document.querySelectorAll(".dot") as NodeListOf<HTMLButtonElement>;
+    const cards = document.querySelectorAll(".service-card") as NodeListOf<HTMLElement>;
+    
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+
+    function updateCarousel() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 30;
+        const offset = currentIndex * (cardWidth + gap);
+        carousel.style.transform = `translateX(-${offset}px)`;
+
+        cards.forEach((card, index) => {
+            card.classList.toggle("active", index === currentIndex);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+        });
+    }
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    dots.forEach((dot) => {
+        dot.addEventListener("click", (e) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            currentIndex = parseInt(target.dataset.index || "0");
+            updateCarousel();
+        });
+    });
+
+    // Drag & swipe
+    let startX = 0;
+    let isDragging = false;
+
+    function dragStart(e: MouseEvent | TouchEvent) {
+        isDragging = true;
+        startX = e instanceof MouseEvent ? e.pageX : e.touches[0].pageX;
+        carousel.style.cursor = "grabbing";
+    }
+
+    function drag(e: MouseEvent | TouchEvent) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const currentX = e instanceof MouseEvent ? e.pageX : e.touches[0].pageX;
+        const diff = currentX - startX;
+        if (Math.abs(diff) > 100) dragEnd(e);
+    }
+
+    function dragEnd(e: MouseEvent | TouchEvent) {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.style.cursor = "grab";
+
+        const endX =
+            e instanceof MouseEvent
+                ? e.pageX
+                : e.changedTouches
+                ? e.changedTouches[0].pageX
+                : startX;
+
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                currentIndex = (currentIndex + 1) % totalSlides;
+            } else {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            }
+            updateCarousel();
+        }
+    }
+
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("touchstart", dragStart);
+    carousel.addEventListener("mousemove", drag);
+    carousel.addEventListener("touchmove", drag);
+    carousel.addEventListener("mouseup", dragEnd);
+    carousel.addEventListener("mouseleave", dragEnd);
+    carousel.addEventListener("touchend", dragEnd);
+
+    document.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "ArrowLeft") {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        } else if (e.key === "ArrowRight") {
+            currentIndex = (currentIndex + 1) % totalSlides;
+        }
+        updateCarousel();
+    });
+
+    window.addEventListener("resize", updateCarousel);
+
+    updateCarousel();
+    </script>

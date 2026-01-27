@@ -1,0 +1,33 @@
+---
+import CieloEstrellado from "../components/CieloEstrellado.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/Header.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import ServiciosCarrusel from "../components/ServiciosCarrusel.astro";
+import Contacto from "../components/Contacto.astro";
+import Nosotros from "../components/Nosotros.astro";
+import InteligenciaArtificial from "../components/InteligenciaArtificial.astro";
+---
+
+<MainLayout title="Inicio">
+    
+    <CieloEstrellado/>
+    <section id="inicio" class="seccion"><Hero/></section>
+
+    <main id="servicios" class="seccion contenido-principal contenedor">  
+        <ServiciosCarrusel/>  
+    </main>
+
+    <section id="quienes-somos" class="seccion nosotros">
+        <Nosotros/>
+    </section>
+
+    <section id="contactanos" class="seccion">
+        <Contacto/>
+    </section>
+
+    <section id="inteligencia-artificial" class="seccion seccion-ia"> 
+        <InteligenciaArtificial/>
+    </section>
+
+</MainLayout>

@@ -1,0 +1,76 @@
+---
+
+---
+
+<div class="cielo-estrellado" id="cielo"></div>
+
+<script>
+    function iniciarCielo() {
+        const cielo = document.getElementById('cielo')as HTMLElement;
+        
+        if (!cielo) {
+            console.error('No se encontró el elemento con id="cielo"');
+            return;
+        }
+
+        
+        
+        const numEstrellas = 200;
+
+        // Crear estrellas con diferentes tamaños y posiciones aleatorias
+        for (let i = 0; i < numEstrellas; i++) {
+            const estrella = document.createElement('div');
+            estrella.className = 'estrella';
+            
+            // Asignar tamaño aleatorio
+            const tipo = Math.random();
+            if (tipo < 0.6) {
+                estrella.classList.add('estrella-pequena');
+            } else if (tipo < 0.9) {
+                estrella.classList.add('estrella-mediana');
+            } else {
+                estrella.classList.add('estrella-grande');
+            }
+            
+            // Posición aleatoria
+            estrella.style.left = Math.random() * 100 + '%';
+            estrella.style.top = Math.random() * 100 + '%';
+            
+            // Delay aleatorio para animación
+            estrella.style.animationDelay = Math.random() * 3 + 's';
+            
+            cielo.appendChild(estrella);
+        }
+
+       
+
+        // Crear meteoros ocasionales
+        function crearMeteoro() {
+            const meteoro = document.createElement('div');
+            meteoro.className = 'meteoro';
+            meteoro.style.left = Math.random() * 100 + '%';
+            meteoro.style.top = Math.random() * 30 + '%';
+            meteoro.style.animation = 'caer-meteoro 1.5s linear';
+            
+            cielo.appendChild(meteoro);
+            
+            setTimeout(() => {
+                meteoro.remove();
+            }, 1500);
+        }
+
+        // Crear un meteoro cada 5-10 segundos
+        setInterval(() => {
+            if (Math.random() > 0.5) {
+                crearMeteoro();
+            }
+        }, 7000);
+    }
+
+    // Ejecutar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', iniciarCielo);
+    } else {
+        iniciarCielo();
+    }
+</script>
