@@ -1,32 +1,32 @@
 ---
-import christianImg from "@/assets/img/christian-foto.jpg";
 import diegoImg from "@/assets/img/diego-foto.jpg";
 import oscarImg from "@/assets/img/oscar-foto.jpg";
 
 const team = [
   {
-    name: "Christian",
-    role: "Ingeniero en Informática",
-    image: christianImg,
-    description:
-      "Ingeniero en Informática (UCR) con conocimientos en ciberseguridad y redes CISCO (CCNA). Experiencia en automatizaciones, desarrollo web y agentes de IA.",
-    social: { linkedin: "#", github: "#", email: "#" },
-  },
-  {
     name: "Diego Reyes",
-    role: "Full-Stack Developer",
+    role: "Ingeniero en Informático",
     image: diegoImg,
     description:
-      "Ingeniero en Informática (UCR) especializado en desarrollo web full-stack y automatizaciones inteligentes. Experiencia en aplicaciones escalables.",
-    social: { linkedin: "https://www.linkedin.com/in/diego-reyes-b405a6287/", github: "https://github.com/DieReyesCar", email:"https://mail.google.com/mail/?view=cm&to=diereyescarv@gmail.com&su=Contacto%20desde%20la%20web&body=Hola%20Diego,%0A%0AMe%20gustaría%20ponerme%20en%20contacto%20contigo.%0A%0ASaludos."},
+      "Ingeniero Informático y fundador de Prismatica Software & Automation, enfocado en el desarrollo de software y sitios web a medida, con experiencia en automatizaciones e inteligencia artificial aplicadas a negocios.",
+    social: { 
+      linkedin: "https://www.linkedin.com/in/diego-reyes-b405a6287/", 
+      github: "https://github.com/DieReyesCar", 
+      email: "https://mail.google.com/mail/?view=cm&to=diereyescarv@gmail.com&su=Contacto%20desde%20la%20web&body=Hola%20Diego,%0A%0AMe%20gustaría%20ponerme%20en%20contacto%20contigo.%0A%0ASaludos.",
+      whatsapp: "https://wa.me/50686180352?text=Hola%20Diego,%20me%20gustaría%20consultar%20sobre%20sus%20servicios"
+    },
   },
   {
     name: "Oscar",
-    role: "IT Infrastructure",
+    role: "Soporte TI",
     image: oscarImg,
     description:
-      "Ingeniero en Tecnologías de Información (UTN) especializado en infraestructura tecnológica, redes y sistemas seguros.",
-    social: { linkedin: "#", github: "#", email: "#" },
+      "Informático especializado en infraestructura tecnologíca de redes, servidores y servicios de la nube, co-fundador de Prismatica Software & Automation. Especialización en soporte TI con buena atención al cliente",
+    social: { 
+      linkedin: "https://www.linkedin.com/in/oscar-benavides-cruz-72021a341/", 
+      email: "https://mail.google.com/mail/?view=cm&to=obenavidescruz12@gmail.com&su=Contacto%20desde%20la%20web&body=Hola%20Oscar,%0A%0AMe%20gustaría%20ponerme%20en%20contacto%20contigo.%0A%0ASaludos.",
+      whatsapp: "https://wa.me/50688119717?text=Hola%20Oscar,%20necesito%20soporte%20TI"
+    },
   },
 ];
 ---
@@ -51,22 +51,22 @@ const team = [
       </p>
     </div>
 
-    <!-- Team grid - Responsive -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <!-- Team grid - Optimizado para 2 integrantes -->
+    <div class="team-grid">
       {
         team.map((member, index) => (
           <div
             class="group team-card"
             style={`animation-delay: ${index * 0.15}s`}
           >
-            <div class="relative team-card-inner bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-5 sm:p-6 text-center transition-all duration-500 hover:border-[#00D6A1]/70 hover:shadow-[0_20px_40px_rgba(0,214,161,0.1)]">
+            <div class="team-card-inner bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-5 sm:p-6 text-center transition-all duration-500 hover:border-[#00D6A1]/70 hover:shadow-[0_20px_40px_rgba(0,214,161,0.1)]">
               <!-- Glow effect on hover -->
               <div class="absolute inset-0 rounded-xl sm:rounded-2xl bg-linear-to-r from-[#00D6A1]/0 via-[#00D6A1]/0 to-[#00D6A1]/0 opacity-0 group-hover:from-[#00D6A1]/20 group-hover:via-[#00D6A1]/40 group-hover:to-[#00D6A1]/20 group-hover:opacity-10 transition-all duration-500 blur-xl" />
               
               <!-- Border glow -->
               <div class="absolute inset-0 rounded-xl sm:rounded-2xl border-2 border-transparent group-hover:border-[#00D6A1]/10 transition-all duration-500 glow-border" />
               
-              <div class="relative z-10">
+              <div class="relative z-10 flex flex-col h-full">
                 <!-- Image - Responsive size -->
                 <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-4 sm:mb-5 md:mb-6">
                   <div class="absolute inset-0 rounded-full bg-linear-to-br from-[#00D6A1] to-[#ed1d85] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
@@ -77,19 +77,26 @@ const team = [
                   />
                 </div>
 
-                <!-- Info - Responsive typography -->
-                <h3 class="font-heading text-lg sm:text-xl font-semibold mb-1 text-white">
-                  {member.name}
-                </h3>
-                <p class="text-[#00D6A1] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
-                  {member.role}
-                </p>
-                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6">
-                  {member.description}
-                </p>
+                <!-- Info - Responsive typography con altura fija -->
+                <div class="grow flex flex-col">
+                  <h3 class="font-heading text-lg sm:text-xl font-semibold mb-1 text-white">
+                    {member.name}
+                  </h3>
+                  <p class="text-[#00D6A1] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
+                    {member.role}
+                  </p>
+                  
+                  <!-- Descripción con altura fija -->
+                  <div class="description-container mb-5 sm:mb-6">
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                </div>
 
-                <!-- Social - Responsive buttons -->
-                <div class="flex items-center justify-center gap-3 sm:gap-4">
+                <!-- Social - Responsive buttons (siempre al fondo) -->
+                <div class="flex items-center justify-center gap-3 sm:gap-4 mt-auto">
+                  {/* LinkedIn */}
                   <a
                     href={member.social.linkedin}
                     target="_blank"
@@ -106,29 +113,35 @@ const team = [
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                   </a>
-                  <a
-                    href={member.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00D6A1] hover:bg-[#00D6A1]/10 hover:border-[#00D6A1]/30 transition-all duration-300 active:scale-95"
-                    aria-label={`GitHub de ${member.name}`}
-                  >
-                    <svg
-                      class="w-4 h-4"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+
+                  {/* GitHub - Solo para Diego */}
+                  {member.social.github && (
+                    <a
+                      href={member.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00D6A1] hover:bg-[#00D6A1]/10 hover:border-[#00D6A1]/30 transition-all duration-300 active:scale-95"
+                      aria-label={`GitHub de ${member.name}`}
                     >
-                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                    </svg>
-                  </a>
+                      <svg
+                        class="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                      </svg>
+                    </a>
+                  )}
+
+                  {/* Email */}
                   <a
                     href={member.social.email}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00D6A1] hover:bg-[#00D6A1]/10 hover:border-[#00D6A1]/30 transition-all duration-300 active:scale-95"
                     aria-label={`Email de ${member.name}`}
-                        >
+                  >
                     <svg
                       class="w-4 h-4"
                       fill="none"
@@ -142,6 +155,24 @@ const team = [
                         stroke-width="2"
                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
+                    </svg>
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href={member.social.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366]/30 transition-all duration-300 active:scale-95"
+                    aria-label={`WhatsApp de ${member.name}`}
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                     </svg>
                   </a>
                 </div>
@@ -175,6 +206,29 @@ const team = [
 </script>
 
 <style>
+  /* Grid optimizado para 2 integrantes */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Tablet y desktop - 2 columnas */
+  @media (min-width: 640px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .team-grid {
+      gap: 2.5rem;
+    }
+  }
+
   /* Section header animation */
   .section-header {
     opacity: 0;
@@ -199,9 +253,31 @@ const team = [
     transform: translateY(0);
   }
 
-  /* Card hover effects */
+  /* Card con altura uniforme */
   .team-card-inner {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
     transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Altura fija para la descripción */
+  .description-container {
+    min-height: 100px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 640px) {
+    .description-container {
+      min-height: 120px;
+    }
+    
+    .team-card-inner {
+      min-height: 460px;
+    }
   }
 
   /* Desktop only hover effects */
@@ -222,6 +298,10 @@ const team = [
   @media (max-width: 640px) {
     .team-card {
       transform: translateY(20px);
+    }
+    
+    .team-card-inner {
+      min-height: 400px;
     }
     
     /* Faster animations on mobile */
@@ -250,17 +330,6 @@ const team = [
     .team-card {
       -webkit-tap-highlight-color: transparent;
       user-select: none;
-    }
-  }
-
-  /* Tablet layout optimization */
-  @media (min-width: 640px) and (max-width: 1023px) {
-    /* Center last card if odd number */
-    .team-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 400px;
-      margin: 0 auto;
-      width: 100%;
     }
   }
 </style>

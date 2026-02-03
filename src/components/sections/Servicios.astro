@@ -1,58 +1,65 @@
 ---
 // ServicesSection.astro
+
 const services = [
   {
     number: "01",
     icon: "zap",
-    title: "Automatizaciones Inteligentes",
+    title: "Desarrollo Web a Medida",
     description:
-      "Optimizamos procesos para ahorrar tiempo, reducir errores y aumentar la eficiencia de tu negocio.",
+    "Sistemas web o aplicaciones personalizadas según las necesidades específicas del negocio.",
     color: "green",
+    href: "/servicios/web-design",
   },
   {
     number: "02",
     icon: "globe",
-    title: "Desarrollo Web",
+    title: "Automatización de Procesos Empresariales",
     description:
-      "Creamos sitios web modernos, rápidos y optimizados que impulsan tu presencia digital.",
+           "Automatización de tareas repetitivas y flujos operativos (formularios, correos, reportes, integraciones entre sistemas).",
     color: "pink",
+    href: "/servicios/automation",
   },
   {
     number: "03",
     icon: "users",
-    title: "Consultoría Digital",
+    title: "Consultoría y Soporte Digital",
     description:
-      "Te ayudamos a transformar tu negocio con estrategias digitales efectivas y personalizadas.",
+           "Acompañamiento continuo para actualizar, optimizar y mejorar tu sitio web, asegurando que la información y el contenido siempre estén al día.",
     color: "green",
+    href: "/servicios/digital-support",
   },
   {
     number: "04",
     icon: "palette",
-    title: "Diseño UX/UI",
+    title: "Diseño y Desarrollo de Sitios Web Profesionales",
     description:
-      "Diseñamos interfaces intuitivas que mejoran la experiencia de tus usuarios.",
+      "Sitios corporativos, landing pages y plataformas web enfocadas en rendimiento, experiencia de usuario y escalabilidad.",
     color: "pink",
+    href: "/servicios/professional-web-design",
   },
   {
     number: "05",
     icon: "link2",
-    title: "Integración de Sistemas",
+    title: "Integración y Conexión de Sistemas",
     description:
-      "Conectamos tus herramientas y plataformas para trabajar de forma unificada.",
+      "Integración de APIs, plataformas externas y herramientas existentes para que todo el ecosistema digital funcione de forma unificada.",
     color: "green",
+    href: "/servicios/integration",
   },
   {
     number: "06",
     icon: "bot",
-    title: "Agentes de IA",
+    title: "Agentes de Inteligencia Artificial",
     description:
-      "Desarrollamos agentes inteligentes que automatizan tareas complejas 24/7.",
+      "Agentes autónomos capaces de ejecutar tareas específicas como atención al cliente, seguimiento de leads, generación de reportes o asistencia interna.",
     color: "pink",
+    href: "/servicios/ai-agents",
   },
 ];
 ---
 
-<section id="servicios" class="border-t relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden bg-white/2">
+<section id="servicios" class="border-t-0 relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden bg-white/3">
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section header - Responsive -->
     <div class="text-center mb-12 sm:mb-14 md:mb-16 section-header">
@@ -79,8 +86,9 @@ const services = [
         <div id="services-track-mobile" class="flex transition-transform duration-500 ease-in-out" style="min-height: 280px;">
           {services.map((service) => (
             <div class="shrink-0 w-full px-2">
-              <div
-                class="group relative bg-[#0a0b1a] backdrop-blur-xl border border-[#0a0b1a] rounded-xl p-6 hover:bg-white/10 hover:border-[#00D6A1]/30 transition-all duration-300 active:scale-[0.98] h-full flex flex-col"
+              <a
+                href={service.href} 
+                class="group relative bg-[#0a0b1a] backdrop-blur-xl border border-[#0a0b1a] rounded-xl p-6 hover:bg-white/10 hover:border-[#00D6A1]/30 transition-all duration-300 active:scale-[0.98] h-full flex flex-col cursor-pointer"
               >
                 <!-- Number badge -->
                 <span
@@ -140,7 +148,7 @@ const services = [
                     {service.description}
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           ))}
         </div>
@@ -186,8 +194,9 @@ const services = [
     <!-- TABLET & DESKTOP: Grid estático -->
     <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
       {services.map((service, index) => (
-        <div
-          class="group relative bg-[#0a0b1a] backdrop-blur-xl border border-[#0a0b1a] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 hover:bg-white/10 hover:border-[#00D6A1]/30 transition-all duration-300 service-card hover:shadow-[0_20px_40px_rgba(0,214,161,0.1)] hover:-translate-y-2"
+        <a
+          href={service.href} 
+          class="group relative bg-[#0a0b1a] backdrop-blur-xl border border-[#0a0b1a] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 hover:bg-white/10 hover:border-[#00D6A1]/30 transition-all duration-300 service-card hover:shadow-[0_20px_40px_rgba(0,214,161,0.1)] hover:-translate-y-2 block cursor-pointer"
           style={`animation-delay: ${index * 0.1}s`}
         >
           <!-- Number badge -->
@@ -253,7 +262,7 @@ const services = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>

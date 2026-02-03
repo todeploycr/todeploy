@@ -3,12 +3,12 @@
 import logoPrimatica from "@/assets/img/logo.png";
 
 const navItems = [
-  { name: "Inicio", href: "#inicio" },
-  { name: "Servicios", href: "#servicios" },
-  { name: "Nosotros", href: "#nosotros" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "IA", href: "#ia" },
-  { name: "Contacto", href: "#contacto" },
+  { name: "Inicio", href: "/#inicio" },
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Portfolio", href: "/#portfolio" },
+  { name: "Nosotros", href: "/#nosotros" },
+  { name: "IA", href: "/#ia" },
+  { name: "Contacto", href: "/#contacto" },
 ];
 ---
 
@@ -20,7 +20,7 @@ const navItems = [
     class="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4 flex items-center justify-between"
   >
     <!-- Logo - Responsive -->
-    <a href="#inicio" class="flex items-center gap-2 sm:gap-3 relative z-10">
+    <a href="/#inicio" class="flex items-center gap-2 sm:gap-3 relative z-10">
           <div class="relative w-12 h-12 shrink-0">
             <img 
               src={logoPrimatica.src} 
@@ -56,7 +56,7 @@ const navItems = [
     <!-- CTA Button - Desktop -->
     <div class="hidden lg:block">
       <a
-        href="#contacto"
+        href="/#contacto"
         class="bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] font-bold px-6 py-2 rounded-lg transition-all duration-300 inline-block shadow-lg hover:shadow-[#00D6A1]/50"
       >
         Contáctanos
@@ -115,7 +115,7 @@ const navItems = [
         ))
       }
       <a
-        href="#contacto"
+        href="/#contacto"
         class="bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] font-bold w-full mt-2 py-3 rounded-lg transition-colors text-center text-sm sm:text-base"
       >
         Contáctanos

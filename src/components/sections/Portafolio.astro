@@ -1,55 +1,21 @@
 ---
 // PortfolioSection.astro
+import ameliaWebsite from "@/assets/img/amelia-website.jpg";
+
 const projects = [
   {
-    title: "E-commerce Premium",
-    category: "Desarrollo Web",
+    title: "Sitio web profesional para psicología clínica.",
+    category: "Diseño y desarrollo de sitios web profesionales",
     description:
-      "Plataforma de comercio electrónico con integración de pagos y gestión de inventario automatizada.",
-    image:
-      "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=600&h=400&fit=crop",
-    tags: ["React", "Node.js", "Stripe"],
+      "Sitio web diseñado y desarrollado para la psicóloga Amelia Reyes, enfocado en transmitir cercanía, confianza y profesionalismo. La plataforma presenta sus servicios en salud mental materna, bienestar emocional femenino y terapia de pareja, con una estructura clara, diseño cálido y una experiencia de usuario pensada para acompañar y orientar a cada paciente desde el primer contacto.",
+    image: ameliaWebsite,
+    tags: ["Astro", "Tailwind", "TypeScript"],
+    link: "https://psicologaameliareyes.com/", // Link del proyecto
   },
-  /*{
-    title: "Sistema de Automatización",
-    category: "Automatización",
-    description:
-      "Flujos automatizados que conectan CRM, email marketing y gestión de clientes en tiempo real.",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
-    tags: ["n8n", "APIs", "Zapier"],
-  },
-  {
-    title: "Dashboard Analítico",
-    category: "Data & BI",
-    description:
-      "Panel de control interactivo con visualización de datos en tiempo real y reportes automatizados.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    tags: ["React", "D3.js", "PostgreSQL"],
-  },
-  {
-    title: "Agente IA Personalizado",
-    category: "Inteligencia Artificial",
-    description:
-      "Asistente virtual inteligente para atención al cliente 24/7 con procesamiento de lenguaje natural.",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-    tags: ["OpenAI", "Python", "LangChain"],
-  },*/
-];
-
-const clients = [
-  "TechCorp",
-  "InnovateLab",
-  "DigitalFirst",
-  "CloudSystems",
-  "DataDriven",
-  "SmartSolutions",
 ];
 ---
 
-<section id="portfolio" class="border-b relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden bg-white/2">
+<section id="portfolio" class="border-b-0 relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden bg-white/3">
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section header - Responsive -->
     <div class="text-center mb-12 sm:mb-14 md:mb-16 section-header">
@@ -86,7 +52,7 @@ const clients = [
                 <!-- Image - Responsive height -->
                 <div class="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <img
-                    src={project.image}
+                    src={project.image.src}
                     alt={project.title}
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -94,7 +60,12 @@ const clients = [
 
                   <!-- Overlay with "Ver Proyecto" button - Hidden on mobile -->
                   <div class="hidden sm:flex absolute inset-0 items-center justify-center bg-[#0a0b1a]/80 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <button class="bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] px-4 sm:px-6 py-2 sm:py-3 rounded-lg inline-flex items-center text-xs sm:text-sm font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-lg">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] px-4 sm:px-6 py-2 sm:py-3 rounded-lg inline-flex items-center text-xs sm:text-sm font-bold transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-lg"
+                    >
                       <svg
                         class="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                         fill="none"
@@ -110,7 +81,7 @@ const clients = [
                         />
                       </svg>
                       Ver Proyecto
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -137,7 +108,12 @@ const clients = [
 
                   <!-- Mobile CTA Button - Only visible on mobile -->
                   <div class="sm:hidden mt-4">
-                    <button class="w-full bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] px-4 py-2.5 rounded-lg inline-flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-lg active:scale-95">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="w-full bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] px-4 py-2.5 rounded-lg inline-flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-lg active:scale-95"
+                    >
                       <svg
                         class="w-4 h-4 mr-2"
                         fill="none"
@@ -153,7 +129,7 @@ const clients = [
                         />
                       </svg>
                       Ver Proyecto
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -162,49 +138,6 @@ const clients = [
         ))
       }
     </div>
-
-    <!-- Clients section 
-    <div class="text-center clients-section">
-      <h3 class="font-heading text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-gray-400 px-4">
-        Empresas que confían en nosotros
-      </h3>
-
-      <div class="relative overflow-hidden py-4">
-        <div class="flex animate-marquee">
-          {
-            [...clients, ...clients].map((client, index) => (
-              <div class="shrink-0 mx-4 sm:mx-8 px-6 sm:px-8 py-3 sm:py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg hover:border-[#00D6A1]/90 transition-all duration-300">
-                <span class="font-heading text-base sm:text-lg font-semibold text-gray-500 hover:text-[#00D6A1] transition-colors whitespace-nowrap">
-                  {client}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </div>
--->
-    <!-- CTA 
-    <div class="text-center mt-8 sm:mt-12 cta-section px-4">
-      <button
-        class="bg-[#00D6A1] hover:bg-[#00D6A1]/90 text-[#0a0b1a] font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg inline-flex items-center justify-center group transition-all duration-300 shadow-lg hover:shadow-[#00D6A1]/50 text-sm sm:text-base w-full sm:w-auto"
-      >
-        Ver Todos los Proyectos
-        <svg
-          class="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-      </button>
-    </div> -->
   </div>
 </section>
 

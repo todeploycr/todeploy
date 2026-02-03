@@ -3,13 +3,15 @@
 
 <div
   id="background"
-  class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden bg-[#0a0b1a]"
-  style="z-index: -1;"
+  class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden"
+  style="z-index: 1;" 
+  
 >
 </div>
 
 <script is:inline>
   (function() {
+    
     function createStars() {
       const container = document.getElementById("background");
       
@@ -19,7 +21,7 @@
       }
 
       // Create 150 regular stars
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 130; i++) {
         const star = document.createElement("div");
         star.style.position = "absolute";
         star.style.borderRadius = "50%";
@@ -36,6 +38,7 @@
 
       // Add 15 glowing stars
       for (let i = 0; i < 15; i++) {
+
         const glowStar = document.createElement("div");
         glowStar.style.position = "absolute";
         glowStar.style.borderRadius = "50%";
